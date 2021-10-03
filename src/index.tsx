@@ -1,19 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import 'semantic-ui-css/semantic.min.css';
 import App from "./App";
 import store from "./appStore/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import { IntlProvider } from "react-intl";
 
 ReactDOM.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </BrowserRouter>
+        <IntlProvider locale="en" defaultLocale="en">
+            <BrowserRouter>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </BrowserRouter>
+        </IntlProvider>
     </React.StrictMode>,
     document.getElementById("root")
 );

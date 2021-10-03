@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Accordion, Button } from "semantic-ui-react";
 import dogApiSlice, {
     useFetchBreedsQuery,
 } from "../features/dog-api/dogApiSlice";
@@ -12,7 +13,7 @@ const ShowDogs = () => {
     // dogApiSlice.endpoints.fetchBreeds.useQuery(numOfDogs);
 
     return (
-        <div>
+        <>
             <div style={{ display: "flex", margin: "auto" }}>
                 <p>Number of dog breeds to fetch:</p>
                 <select
@@ -27,7 +28,13 @@ const ShowDogs = () => {
             </div>
             <div>
                 <p>Number of dogs fetched: {data.length}</p>
-                <table>
+                <Button primary disabled={true}>Hello</Button>
+                <Accordion panels={data.map((breed) => ({
+                    key: breed.id,
+                    name: breed.name,
+                    imageUrl: breed.image.url,
+                }))} />
+                {/* <table>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -48,9 +55,9 @@ const ShowDogs = () => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table> */}
             </div>
-        </div>
+        </>
     );
 };
 
